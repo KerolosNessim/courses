@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "title": "مرحبا",
+    "description": "هذه هي الصفحة الرئيسية."
+  },
+  "about": {
+    "title": "حول",
+    "description": "هذه هي صفحة حول."
+  }
+}
