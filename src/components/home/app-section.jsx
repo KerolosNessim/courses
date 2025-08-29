@@ -69,8 +69,8 @@ const AppSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.7 }}
             className="hidden lg:block relative w-1/2  min-h-screen ">
-            <Image src="/home/iphone-1.png" alt="hero" width={700} height={700} className="bottom-0 start-0 absolute h-full object-contain object-bottom " />
-            <Image src="/home/iphone-2.png" alt="hero" width={700} height={700} className="bottom-0 start-24 absolute h-[60%] object-contain object-bottom" />
+            <Image src="/home/iPhone-1.png" alt="hero" width={700} height={700} className="bottom-0 start-0 absolute h-full object-contain object-bottom " />
+            <Image src="/home/iPhone-2.png" alt="hero" width={700} height={700} className="bottom-0 start-24 absolute h-[60%] object-contain object-bottom" />
           </motion.div>
         </div>
       </div>

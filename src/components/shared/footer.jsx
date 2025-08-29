@@ -15,7 +15,7 @@ const Footer = () => {
       transition={{ duration: 0.7 }}
       className='bg-white pb-12 pt-20 space-y-12 relative'>
       <Image src="/home/pulse-bg.svg" alt="hero-shadow" width={300} height={300} className="absolute  top-4 right-0 max-lg:hidden" />
-
+      {/* links and logo */}
       <div className='container'>
         <div className="grid grid-cols-12 max-lg:gap-8">
           {/* logo and social links */}
@@ -105,7 +105,7 @@ const Footer = () => {
                   <p>Blogs</p>
                 </Link>
                 <Link href="/" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
-                  <Image src="/shared/Contact.svg" alt="icon" width={20} height={20} />
+                  <Image src="/shared/contact.svg" alt="icon" width={20} height={20} />
                   <p>Contacts</p>
                 </Link>
                 <Link href="/" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
