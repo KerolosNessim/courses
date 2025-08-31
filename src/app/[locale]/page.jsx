@@ -7,12 +7,15 @@ import LessonSection from "@/components/home/lesson-section";
 import SuccessStories from "@/components/home/success-stories";
 import WhyUsSection from "@/components/home/why-us-section";
 import Footer from "@/components/shared/footer";
+import Navbar from "@/components/shared/navbar";
 import Image from "next/image";
 
 export default function HomePage() {
 
   return (
     <>
+      {/* navbar */}
+      <Navbar />
       <main>
         <HeroSection />
         <WhyUsSection />

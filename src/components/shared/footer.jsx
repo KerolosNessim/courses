@@ -71,11 +71,11 @@ const Footer = () => {
               <div className='h-1.5 w-4 bg-main-light-orange rounded-full'></div>
               {/* links */}
               <div className='space-y-4'>
-                <Link href="/" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
+                <Link href="/courses" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
                   <Image src="/shared/courses.svg" alt="icon" width={20} height={20} />
                   <p>Courses</p>
                 </Link>
-                <Link href="/" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
+                <Link href="/private-lesson" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
                   <Image src="/shared/Specialties.svg" alt="icon" width={20} height={20} />
                   <p>Specialties</p>
                 </Link>
@@ -144,7 +144,7 @@ const Footer = () => {
       </div>
       {/* contact */}
       <div className='container flex items-center justify-between max-md:flex-col max-md:gap-2'>
-        <p className='lg:text-2xl text-xl text-main-light-orange font-bold'>Talk to a world-class medical expert</p>
+        <p className='lg:text-2xl text-xl text-main-light-orange font-bold max-md:text-center'>Talk to a world-class medical expert</p>
         {/* contact link */}
         <Link href="/" className="group max-lg:mx-auto bg-main-light-navy ps-4 pe-1 py-1 text-main-navy rounded-full text-sm font-semibold flex w-fit items-center gap-6">
           Contact now

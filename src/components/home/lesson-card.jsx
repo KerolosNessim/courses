@@ -3,6 +3,7 @@ import React from 'react'
 import { PiStarFill, PiShoppingBagOpen } from "react-icons/pi";
 import { IoMdArrowRoundForward } from "react-icons/io";
 import { RiHeart2Line } from "react-icons/ri";
+import { Link } from '@/i18n/navigation';
 
 const LessonCard = () => {
   return (
@@ -22,10 +23,10 @@ const LessonCard = () => {
             {/* add to cart,favorite,enroll */}
             <div className='flex items-center gap-2'>
               {/* enroll */}
-              <button className='px-3 py-3 bg-main-orange text-white rounded-full text-xs font-semibold flex items-center gap-3 hover:gap-4 transition-all duration-300'>
-                Enroll Now
+              <Link href="/private-lesson/1" className='px-3 py-3 bg-main-orange text-white rounded-full text-xs font-semibold flex items-center gap-3 hover:gap-4 transition-all duration-300'>
+                Book Now
                 <IoMdArrowRoundForward size={16} />
-              </button>
+              </Link>
 
 
               {/* cart */}

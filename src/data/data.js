@@ -1,4 +1,3 @@
-
 export const whyUsData = [
   {
     id: 1,
@@ -64,5 +63,85 @@ export const filter = [
     id: 7,
     title: "others",
     count: "05",
+  },
+];
+
+export const courseData = [
+  {
+    name: "Introduction to Human Anatomy",
+    lectures: 6,
+    duration: "15 Min",
+  },
+  {
+    name: "Skeletal System Overview",
+    lectures: 4,
+    duration: "35 Min",
+  },
+  {
+    name: "Muscular System Basics",
+    lectures: 10,
+    duration: "32 Min",
+  },
+  {
+    name: "Circulatory And Respiratory Systems",
+    lectures: 2,
+    duration: "10 Min",
+  },
+  {
+    name: "Digestive And Nervous Systems",
+    lectures: 8,
+    duration: "40 Min",
+  },
+  {
+    name: "Clinical Applications & Case Studies",
+    lectures: 4,
+    duration: "22 Min",
+  },
+  {
+    name: "Final Review & Quiz",
+    lectures: 1,
+    duration: "32 Min",
+  },
+];
+
+export const courseDataDesc = [
+  {
+    section: "Introduction To Anatomy",
+    description:
+      "Understand the importance of anatomy in medicine and explore body orientation.",
+  },
+  {
+    section: "Skeletal System",
+    description:
+      "Study bones, joints, and their functions with clinical correlations.",
+  },
+  {
+    section: "Muscular System",
+    description:
+      "Explore muscle types, structures, and how they support body movement.",
+  },
+  {
+    section: "Circulatory System",
+    description:
+      "Learn the heart, blood vessels, and blood circulation essentials.",
+  },
+  {
+    section: "Respiratory System",
+    description: "Understand lungs, airways, and the process of breathing.",
+  },
+  {
+    section: "Digestive System",
+    description:
+      "Discover how food is processed, absorbed, and transformed into energy.",
+  },
+  {
+    section: "Nervous System",
+    description:
+      "Explore the brain, spinal cord, and neural pathways in control.",
+  },
+  {
+    section: "Final Review & Quiz",
+    description:
+      "Recap major systems and test your knowledge with a short quiz.",
   },
 ];

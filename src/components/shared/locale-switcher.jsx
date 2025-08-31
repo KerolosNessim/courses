@@ -24,9 +24,9 @@ const LocaleSwitcher = () => {
     <button
       onClick={toggleLocale}
       disabled={isPending}
-      className="px-3 py-1 rounded-md border bg-gray-200 hover:bg-gray-300 transition"
+      className="size-10 bg-main-orange text-white rounded-full  font-semibold flex items-center justify-center cursor-pointer hover:bg-main-navy  transition-all duration-300"
     >
-      {locale === "en" ? "العربية" : "English"}
+      {locale === "en" ? "ع" : "EN"}
     </button>
   );
 };

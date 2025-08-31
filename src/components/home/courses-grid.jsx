@@ -1,10 +1,10 @@
 import React from 'react'
 import CoursesCard from './course-card'
 import * as motion from "motion/react-client"
-const CoursesGrid = () => {
+const CoursesGrid = ({num=4}) => {
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-2 gap-2'>
-      {[...Array(4)].map((_, index) => (
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+      {[...Array(num)].map((_, index) => (
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           whileInView={{ opacity: 1, scale: 1 }}

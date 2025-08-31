@@ -20,7 +20,7 @@ const CoursesSection = () => {
           <p className='lg:leading-8 font-semibold max-lg:text-sm '>Browse our selection of medical courses tailored to your needs and learn in a practical way from trusted experts.</p>
         </div>
         {/* courses link */}
-        <Link href="/" className="group max-lg:mx-auto bg-main-light-navy px-3 py-2  rounded-full text-sm font-semibold flex w-fit items-center gap-4">
+        <Link href="/courses" className="group max-lg:mx-auto bg-main-light-navy px-3 py-2  rounded-full text-sm font-semibold flex w-fit items-center gap-4">
           Discover courses
           <span className="size-10 bg-white rounded-full text-main-navy flex items-center justify-center -rotate-45 group-hover:rotate-0 transation-all duration-300">
             <IoMdArrowRoundForward size={16} />
@@ -28,18 +28,18 @@ const CoursesSection = () => {
         </Link>
       </motion.div>
       {/* filter panel and grid of courses */}
-      <div className='flex max-md:flex-col max-md:gap-4  gap-6 '>
+      <div className='flex max-lg:flex-col max-md:gap-4  gap-6  '>
         {/* filter panel */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className='lg:w-1/4 md:1/3 w-full'>
+          className='lg:w-1/4  w-full'>
           <CoursesFilterPanel />
         </motion.div>
         {/* grid of courses */}
-        <div className='lg:w-3/4 md:2/3 w-full'>
+        <div className='lg:w-3/4  w-full'>
           <CoursesGrid />
         </div>
       </div>

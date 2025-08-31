@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google'
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { Toaster } from "@/components/ui/sonner"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default async function RootLayout({ children, params }) {
     <html lang={locale}>
       <body className={`${poppins.className} `} dir={locale === "ar" ? "rtl" : "ltr"}>
         <NextIntlClientProvider >
+          <Toaster />
           {children}
         </NextIntlClientProvider>
       </body>
