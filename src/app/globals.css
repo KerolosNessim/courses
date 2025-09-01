@@ -180,3 +180,15 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--main-light-orange); 
 }
+
+
+.PhoneInputInput:focus{
+  outline: none !important;
+} 
+.PhoneInputInput::placeholder{
+  font-size: 14px !important;
+  color:#737373 !important;
+} 
+.PhoneInputCountrySelectArrow {
+  display: none !important;
+}
