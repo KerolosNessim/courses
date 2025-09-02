@@ -2,8 +2,10 @@ import AuthSlider from '@/components/auth/auth-slider'
 import LoginForm from '@/components/auth/login-form'
 import React from 'react'
 import * as motion from "motion/react-client"
+import VerfiyEmailForm from '@/components/auth/verfiy-email-form'
 
-const LoginPage = () => {
+
+const VerfiyEmailPage = () => {
   return (
     <main className='min-h-screen py-12 bg-main-light-orange flex items-center justify-center'>
       <section className='container   grid grid-cols-3  gap-4'>
@@ -14,7 +16,7 @@ const LoginPage = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
           className='lg:col-span-1 col-span-3  bg-white rounded-[50px] p-12 flex items-center justify-center'>
-          <LoginForm />
+          <VerfiyEmailForm />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 30 }}
@@ -31,4 +33,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default VerfiyEmailPage

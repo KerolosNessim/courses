@@ -50,7 +50,7 @@ const LoginForm = () => {
 
   }
   return (
-    <div>
+    <div className="w-full">
       {/* logo */}
       <Image src="/shared/logo.png" alt="logo" width={90} height={90} className='block mx-auto mb-8' />
       {/* info  */}
@@ -113,7 +113,7 @@ const LoginForm = () => {
                 <label htmlFor="remember" className="text-sm text-main-navy font-medium">remember me</label>
               </div>
               <div className="text-sm">
-                <Link href="/forgit-password" className="font-medium text-main-navy hover:text-main-orange hover:underline">Forgot password?</Link>
+                <Link href="/forget-password" className="font-medium text-main-navy hover:text-main-orange hover:underline">Forgot password?</Link>
               </div>
             </div>
           </div>

@@ -12,7 +12,7 @@ const SignUpPage = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className='lg:col-span-1 col-span-3  bg-white rounded-[50px] p-12'>
+          className='lg:col-span-1 col-span-3  bg-white rounded-[50px] p-12 flex items-center justify-center'>
           <SignUpForm />
         </motion.div>
         <motion.div

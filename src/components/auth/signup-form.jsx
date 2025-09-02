@@ -17,10 +17,11 @@ import { useForm } from "react-hook-form"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { IoMdArrowRoundForward } from "react-icons/io"
 import { LiaUserSolid } from 'react-icons/lia'
+import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'
 import { z } from "zod"
 import { Checkbox } from "../ui/checkbox"
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+import SignupStep2 from "./signup-step2"
 
 
 // schema
@@ -38,6 +39,7 @@ const formSchema = z.object({
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [steps, setSteps] = useState(1)
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -53,11 +55,12 @@ const SignUpForm = () => {
   // submit function 
   function onSubmit(data) {
     console.log(data);
-
-
+    setSteps(2)
   }
-  return (
-    <div>
+
+
+  if (steps === 1) return (
+    <div className="w-full">
       {/* logo */}
       <Image src="/shared/logo.png" alt="logo" width={90} height={90} className='block mx-auto mb-8' />
       {/* info  */}
@@ -93,7 +96,7 @@ const SignUpForm = () => {
               name="phone"
               render={({ field }) => (
                 <FormItem className={"relative"}>
-                  <Image src={"/auth/phone.svg"} alt="phone" width={20} height={20}  className='absolute top-1/2  end-5 text-main-navy' />
+                  <Image src={"/auth/phone.svg"} alt="phone" width={20} height={20} className='absolute top-1/2  end-5 text-main-navy' />
                   <FormLabel className={"translate-y-4 w-fit ms-6 bg-white px-1 text-main-navy"}>phone number   <span className="text-red-500">*</span></FormLabel>
                   <FormControl>
                     <PhoneInput
@@ -165,10 +168,10 @@ const SignUpForm = () => {
             />
           </div>
           {/* remeber me and forgot password */}
-              <div className="flex items-center gap-1">
-                <Checkbox id="remember" className='border-main-navy shadow-none rounded-[6px] data-[state=checked]:bg-main-orange data-[state=checked]:border-main-orange' />
-                <label htmlFor="remember" className="text-[10px] text-main-gray font-semibold">By click <span className="text-main-navy ">"Sgin Up"</span>you agree <Link href="/terms-and-conditions" className="text-main-orange hover:underline">Terms & Conditions</Link> & <Link href="/privacy-policy" className="text-main-orange hover:underline">Privacy Policy</Link> </label>
-              </div>
+          <div className="flex items-center gap-1">
+            <Checkbox id="remember" className='border-main-navy shadow-none rounded-[6px] data-[state=checked]:bg-green-400 data-[state=checked]:border-green-400' />
+            <label htmlFor="remember" className="text-[10px] text-main-gray font-semibold">By click <span className="text-main-navy ">"Sgin Up"</span>you agree <Link href="/terms-and-conditions" className="text-main-orange hover:underline">Terms & Conditions</Link> & <Link href="/privacy-policy" className="text-main-orange hover:underline">Privacy Policy</Link> </label>
+          </div>
 
           <Button type="submit" className="group w-full h-15 px-5  bg-main-orange  text-white rounded-full text-sm font-semibold flex  items-center justify-between hover:bg-main-orange">
             Sign up
@@ -185,9 +188,12 @@ const SignUpForm = () => {
 
         </form>
       </Form>
-
     </div>
   )
+  if (steps === 2) return (<SignupStep2 data={form.getValues()} setSteps={setSteps} />)
+
+
+
 }
 
 export default SignUpForm
