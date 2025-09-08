@@ -20,7 +20,7 @@ export default function HomePage() {
         <HeroSection />
         <WhyUsSection />
         {/* courses and lessons sections */}
-        <section className="py-16 bg-[url('/home/bg-squares.svg')] relative">
+        <section className="py-16 bg-[url('/home/bg-squares.svg')] relative overflow-x-hidden">
           <Image src="/home/shadow-bg.svg" alt="hero-shadow" width={300} height={300} className="absolute -z-10 top-0 right-0" />
           <Image src="/home/pulse-bg.svg" alt="hero-shadow" width={300} height={300} className="absolute -z-10 top-12 right-0 max-lg:hidden" />
           <Image src="/home/shadow-md.svg" alt="hero-shadow" width={300} height={300} className="absolute -z-10 top-[35%]  left-0 " />

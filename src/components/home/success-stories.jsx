@@ -18,7 +18,9 @@ const SuccessStories = () => {
       <Image src="/home/shadow-bg.svg" alt="hero-shadow" width={250} height={250} className="absolute -z-10 top-0 right-0" />
       <Image src="/home/pulse-bg.svg" alt="hero-shadow" width={250} height={250} className="absolute -z-10 top-10 right-0 max-lg:hidden" />
       <div >
-        <Carousel className={"space-y-8"}
+        <Carousel
+          opts={{ direction: `${locale === "en" ? "ltr" : "rtl"}` }}
+          className={"space-y-8"}
         >
           {/* title and controls */}
           <motion.div
@@ -32,7 +34,7 @@ const SuccessStories = () => {
               <p className='   lg:leading-8 text-sm font-semibold  max-lg:text-xs '>Students provide feedback on medical courses, sharing experiences, outcomes, and <br className='max-lg:hidden' /> suggestions to improve learning quality and enhance future educational opportunities.</p>
             </div>
             {/* controls */}
-            <div className='flex items-center gap-2'>
+            <div className={`flex items-center gap-2 ${locale === "ar" ? "flex-row-reverse" : ""}`}>
               <CarouselPrevious className={"static lg:size-12 bg-main-orange text-white hover:bg-main-orange hover:text-white border-0  translate-y-0"} />
               <CarouselNext className={"static lg:size-12 bg-main-orange text-white hover:bg-main-orange hover:text-white border-0  translate-y-0"} />
             </div>

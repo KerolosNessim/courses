@@ -1,3 +1,5 @@
+import { img } from "motion/react-client";
+
 export const whyUsData = [
   {
     id: 1,
@@ -145,3 +147,87 @@ export const courseDataDesc = [
       "Recap major systems and test your knowledge with a short quiz.",
   },
 ];
+
+export const blogs = [
+  {
+    title: "Popular Articles",
+    description: "Discover trending medical topics, tips, and insights today.",
+  },
+  {
+    title: "Medicine Articles",
+    description: "Discover trending medical topics, tips, and insights today.",
+  },
+  {
+    title: "Pharmacy Articles",
+    description: "Discover trending medical topics, tips, and insights today.",
+  },
+  {
+    title: "Nursing Articles",
+    description: "Discover trending medical topics, tips, and insights today.",
+  },
+];
+
+export const blogDetails = [
+  {
+    title: "Anatomy As The Foundation Of Medicine",
+    description:
+      "Anatomy is the backbone of medical education, offering students a detailed understanding of the human body’s structure. By mastering anatomy, future doctors build essential knowledge that supports clinical reasoning, diagnosis, and effective treatment in all medical specialties.",
+  },
+  {
+    title: "Bridging Theory And Clinical Practice",
+    description:
+      "Studying anatomy allows medical students to connect theoretical knowledge with real-life clinical practice. Through cadaver dissections, imaging, and 3D models, learners visualize how organs, muscles, and systems interact, enabling them to apply classroom knowledge directly to patient care situations.",
+  },
+  {
+    title: "Enhancing Diagnostic And Surgical Skills",
+    description:
+      "A strong command of anatomy improves diagnostic accuracy and surgical performance. Physicians who understand body landmarks, nerve pathways, and vascular systems can identify abnormalities, perform safe interventions, and minimize risks, making anatomy an indispensable tool in medical training worldwide.",
+  },
+  {
+    title: "Anatomy And Technological Advancements",
+    description:
+      "Modern anatomy education integrates technology such as virtual reality, simulation, and interactive 3D platforms. These tools enhance comprehension, reduce reliance on cadavers, and provide students with accessible, innovative, and immersive learning experiences that mirror real clinical environments effectively.",
+  },
+  {
+    title: "Shaping Professional Confidence In Students",
+    description:
+      "Anatomy instills confidence by preparing medical students to face clinical challenges. When students understand body systems deeply, they approach patients with clarity and precision, fostering professional growth, empathy, and trust, which are crucial traits for future healthcare providers.",
+  },
+];
+export const about = [
+  {
+    img: "/about/about-1.svg",
+    title: "Credibility",
+    description:
+      "We provide trusted medical knowledge, backed by real experience and expertise.",
+  },
+  {
+    img: "/about/about-2.svg",
+    title: "Practicality",
+    description:
+      "Courses designed to connect theory with real medical practice.",
+  },
+  {
+    img: "/about/about-3.svg",
+    title: "Flexibility",
+    description: "Learn anytime, anywhere, with full control over your pace.",
+  },
+  {
+    img: "/about/about-4.svg",
+    title: "Professional Growth",
+    description: "Enhance your medical career with skills that matter most.",
+  },
+  {
+    img: "/about/about-5.svg",
+    title: "Innovation",
+    description:
+      "Modern teaching methods with engaging content and interactive tools.",
+  },
+  {
+    img: "/about/about-6.svg",
+    title: "Support",
+    description:
+      "Continuous guidance from an experienced doctor who understands your needs.",
+  },
+];
+

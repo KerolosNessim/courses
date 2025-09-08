@@ -11,8 +11,10 @@ import {
 } from "@/components/ui/carousel"
 import ClientCard from './client-card'
 import Autoplay from "embla-carousel-autoplay"
+import { useLocale } from 'next-intl'
 
 const ClientsReview = () => {
+  const locale = useLocale()
   return (
     <section className='bg-main-light-orange py-20'>
       <div className="container">
@@ -34,6 +36,7 @@ const ClientsReview = () => {
           transition={{ duration: 0.7 }}
           className='mt-10'>
           <Carousel
+            opts={{ loop: true,direction:`${locale === "en" ? "ltr" : "rtl"}` }}
             plugins={[
               Autoplay({
                 delay: 2000,

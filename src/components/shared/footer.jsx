@@ -96,15 +96,15 @@ const Footer = () => {
                   <Image src="/shared/Questions.svg" alt="icon" width={20} height={20} />
                   <p>Questions</p>
                 </Link>
-                <Link href="/" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
+                <Link href="/about" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
                   <Image src="/shared/about-us.svg" alt="icon" width={20} height={20} />
                   <p>About Us</p>
                 </Link>
-                <Link href="/" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
+                <Link href="/blogs" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
                   <Image src="/shared/blog.svg" alt="icon" width={20} height={20} />
                   <p>Blogs</p>
                 </Link>
-                <Link href="/" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
+                <Link href="/contact" className='flex items-center gap-2 text-main-navy font-semibold  hover:gap-3 transition-all duration-300'>
                   <Image src="/shared/contact.svg" alt="icon" width={20} height={20} />
                   <p>Contacts</p>
                 </Link>

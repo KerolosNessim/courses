@@ -28,7 +28,7 @@ const CustomBreadcrumbs = ({ items }) => {
                 </Link>
               ) : (
                 <span
-                  className={`${isFirst ? "text-main-orange" : "text-main-navy"}`}
+                  className={`${isFirst ? "text-main-orange" : "text-main-navy line-clamp-1"}`}
                 >
                   {item.label}
                 </span>

@@ -93,19 +93,19 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link href="/" className='flex items-center gap-1 hover:text-main-orange text-sm text-main-navy font-semibold transition-all duration-300'>
+            <Link href="/about" className='flex items-center gap-1 hover:text-main-orange text-sm text-main-navy font-semibold transition-all duration-300'>
               <Image src="/shared/about-us.svg" alt="icon" width={16} height={16} />
               <p>About Us</p>
             </Link>
           </li>
           <li>
-            <Link href="/" className='flex items-center gap-1 hover:text-main-orange text-sm text-main-navy font-semibold transition-all duration-300'>
+            <Link href="/blogs" className='flex items-center gap-1 hover:text-main-orange text-sm text-main-navy font-semibold transition-all duration-300'>
               <Image src="/shared/blog.svg" alt="icon" width={16} height={16} />
               <p>Blog</p>
             </Link>
           </li>
           <li>
-            <Link href="/" className='flex items-center gap-1 hover:text-main-orange text-sm text-main-navy font-semibold transition-all duration-300'>
+            <Link href="/contact" className='flex items-center gap-1 hover:text-main-orange text-sm text-main-navy font-semibold transition-all duration-300'>
               <Image src="/shared/contact.svg" alt="icon" width={16} height={16} />
               <p>Contact</p>
             </Link>
@@ -133,10 +133,10 @@ const Navbar = () => {
                   {/* mobile nav links */}
                   <div className="flex flex-col gap-4">
                     <Link href="/courses" className="font-semibold text-main-navy hover:text-main-orange">Courses</Link>
-                    <Link href="/courses" className="font-semibold text-main-navy hover:text-main-orange">Private lessons</Link>
-                    <Link href="/" className="font-semibold text-main-navy hover:text-main-orange">About Us</Link>
-                    <Link href="/" className="font-semibold text-main-navy hover:text-main-orange">Blog</Link>
-                    <Link href="/" className="font-semibold text-main-navy hover:text-main-orange">Contact</Link>
+                    <Link href="/private-lesson" className="font-semibold text-main-navy hover:text-main-orange">Private lessons</Link>
+                    <Link href="/about" className="font-semibold text-main-navy hover:text-main-orange">About Us</Link>
+                    <Link href="/blogs" className="font-semibold text-main-navy hover:text-main-orange">Blog</Link>
+                    <Link href="/contact" className="font-semibold text-main-navy hover:text-main-orange">Contact</Link>
                   </div>
                   {/* account links */}
                   <AccountLinks />
