@@ -19,9 +19,11 @@ import { IoMdArrowRoundForward } from "react-icons/io"
 import { LiaUserSolid } from 'react-icons/lia'
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
+import flags from "react-phone-number-input/flags"
 import { z } from "zod"
 import { Checkbox } from "../ui/checkbox"
 import SignupStep2 from "./signup-step2"
+import PhoneInputWithCountry from "../shared/PhoneInputWithCountry"
 
 
 // schema
@@ -99,13 +101,7 @@ const SignUpForm = () => {
                   <Image src={"/auth/phone.svg"} alt="phone" width={20} height={20} className='absolute top-1/2  end-5 text-main-navy' />
                   <FormLabel className={"translate-y-4 w-fit ms-6 bg-white px-1 text-main-navy"}>phone number   <span className="text-red-500">*</span></FormLabel>
                   <FormControl>
-                    <PhoneInput
-                      defaultCountry="SA"
-                      international
-                      countryCallingCodeEditable={false}
-                      placeholder="51 400 78 001"
-                      {...field}
-                      className={"px-5 w-full shadow-xs h-14 border-1 border-gray-300 rounded-full focus-visible:ring-main-light-orange focus-visible:border-main-orange placeholder:text-xs"} />
+                    <PhoneInputWithCountry field={field} />
                   </FormControl>
                   <FormMessage className={"absolute text-red-500 text-xs mt-1 start-2 top-[100%]"} />
                 </FormItem>
