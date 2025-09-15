@@ -17,7 +17,7 @@ const UserSidebar = () => {
       {/* links */}
       <div className='bg-white lg:p-6 p-4 lg:rounded-[40px] rounded-xl '>
         <h3 className='lg:text-lg font-bold uppercase text-main-navy lg:mb-8 mb-4'>Personal information</h3>
-        <ul className="flex flex-col lg:flex-col max-lg:flex-row max-lg:space-x-5 max-lg:space-y-0 lg:space-y-5 overflow-x-auto scrollbar-hide">
+        <ul className="flex flex-col lg:flex-col max-lg:flex-row max-lg:space-x-5 max-lg:space-y-0 lg:space-y-5 overflow-x-auto hide-scrollbar">
           <li className="flex-shrink-0">
             <Link
               href="/user"
