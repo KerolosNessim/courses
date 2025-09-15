@@ -11,66 +11,94 @@ import Image from 'next/image';
 
 const UserSidebar = () => {
   return (
-    <div className='bg-main-background p-8 rounded-[50px] space-y-6'>
+    <div className='bg-main-background lg:p-8 p-4 lg:rounded-[50px] rounded-xl lg:space-y-6 space-y-2'>
       {/* title  */}
-      <h3 className='text-xl font-bold uppercase text-main-orange'>Settings</h3>
+      <h3 className='lg:text-xl font-bold uppercase text-main-orange'>Settings</h3>
       {/* links */}
-      <div className='bg-white p-6 rounded-[40px] '>
-        <h3 className='text-lg font-bold uppercase text-main-navy mb-8'>Personal information</h3>
-        <ul className='space-y-5'>
-          <li>
-            <Link href="/user" className='flex items-center gap-1 font-semibold text-main-navy hover:text-main-orange hover:gap-2 transition-all duration-300'>
-              <LiaUserSolid size={24} className='text-inherit' />
+      <div className='bg-white lg:p-6 p-4 lg:rounded-[40px] rounded-xl '>
+        <h3 className='lg:text-lg font-bold uppercase text-main-navy lg:mb-8 mb-4'>Personal information</h3>
+        <ul className="flex flex-col lg:flex-col max-lg:flex-row max-lg:space-x-5 max-lg:space-y-0 lg:space-y-5 overflow-x-auto scrollbar-hide">
+          <li className="flex-shrink-0">
+            <Link
+              href="/user"
+              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+            >
+              <LiaUserSolid size={24} className="max-lg:size-4 text-inherit" />
               <p>My Profile</p>
-              <IoMdArrowForward size={20} className='text-inherit ms-auto' />
+              <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
           </li>
-          <li>
-            <Link href="/user/courses" className='flex items-center gap-1 font-semibold text-main-navy hover:text-main-orange hover:gap-2 transition-all duration-300'>
-              <HiOutlineFolderOpen size={24} className='text-inherit' />
+
+          <li className="flex-shrink-0">
+            <Link
+              href="/user/courses"
+              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+            >
+              <HiOutlineFolderOpen size={24} className="max-lg:size-4 text-inherit" />
               <p>My Courses</p>
-              <IoMdArrowForward size={20} className='text-inherit ms-auto' />
+              <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
           </li>
-          <li>
-            <Link href="/user/private-lesson" className='flex items-center gap-1 font-semibold text-main-navy hover:text-main-orange hover:gap-2 transition-all duration-300'>
-              <HiOutlineBars3BottomLeft size={24} className='text-inherit' />
+
+          <li className="flex-shrink-0">
+            <Link
+              href="/user/private-lesson"
+              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+            >
+              <HiOutlineBars3BottomLeft size={24} className="max-lg:size-4 text-inherit" />
               <p>My Private lessons</p>
-              <IoMdArrowForward size={20} className='text-inherit ms-auto' />
+              <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
           </li>
-          <li>
-            <Link href="/user/certificates" className='flex items-center gap-1 font-semibold text-main-navy hover:text-main-orange hover:gap-2 transition-all duration-300'>
-              <TbCertificate size={24} className='text-inherit' />
+
+          <li className="flex-shrink-0">
+            <Link
+              href="/user/certificates"
+              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+            >
+              <TbCertificate size={24} className="max-lg:size-4 text-inherit" />
               <p>My certificates</p>
-              <IoMdArrowForward size={20} className='text-inherit ms-auto' />
+              <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
           </li>
-          <li>
-            <Link href="/user/favorites" className='flex items-center gap-1 font-semibold text-main-navy hover:text-main-orange hover:gap-2 transition-all duration-300'>
-              <RiHeart2Line size={24} className='text-inherit' />
+
+          <li className="flex-shrink-0">
+            <Link
+              href="/user/favorites"
+              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+            >
+              <RiHeart2Line size={24} className="max-lg:size-4 text-inherit" />
               <p>My Favorites</p>
-              <IoMdArrowForward size={20} className='text-inherit ms-auto' />
+              <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
           </li>
-          <li>
-            <Link href="/user/cart" className='flex items-center gap-1 font-semibold text-main-navy hover:text-main-orange hover:gap-2 transition-all duration-300'>
-              <PiShoppingBagOpen size={24} className='text-inherit' />
+
+          <li className="flex-shrink-0">
+            <Link
+              href="/user/cart"
+              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+            >
+              <PiShoppingBagOpen size={24} className="max-lg:size-4 text-inherit" />
               <p>My Carts</p>
-              <IoMdArrowForward size={20} className='text-inherit ms-auto' />
+              <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
           </li>
-          <li>
-            <Link href="/user/points" className='flex items-center gap-1 font-semibold text-main-navy hover:text-main-orange hover:gap-2 transition-all duration-300'>
-              <VscActivateBreakpoints size={24} className='text-inherit' />
+
+          <li className="flex-shrink-0">
+            <Link
+              href="/user/points"
+              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+            >
+              <VscActivateBreakpoints size={24} className="max-lg:size-4 text-inherit" />
               <p>My Points</p>
-              <IoMdArrowForward size={20} className='text-inherit ms-auto' />
+              <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
           </li>
         </ul>
+
       </div>
       {/* app */}
-      <div className='bg-main-light-navy  rounded-[40px] text-center relative'>
+      <div className='bg-main-light-navy  rounded-[40px] text-center relative max-lg:hidden'>
         <Image src="/user/b.svg" alt="hero-shadow" width={100} height={100} className="absolute  bottom-0 start:-0 " />
         <Image src="/user/s.svg" alt="hero-shadow" width={200} height={100} className="absolute  bottom-0 start:-0 " />
 

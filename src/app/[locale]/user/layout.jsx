@@ -12,10 +12,10 @@ const UserLayout = ({ children }) => {
         <CustomBreadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Settings', href: '/user' }, { label: 'My Profile' }]} />
         <section className='grid grid-cols-12 gap-4'>
           {/* sidebar */}
-          <div className='col-span-4'>
+          <div className='lg:col-span-4 col-span-12'>
             <UserSidebar />
           </div>
-          <div className='col-span-8 bg-main-background rounded-[50px] p-12'>
+          <div className='lg:col-span-8 col-span-12 bg-main-background lg:rounded-[50px] rounded-xl lg:p-8 p-4'>
             {children}
           </div>
         </section>
