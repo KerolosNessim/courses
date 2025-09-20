@@ -2,7 +2,6 @@
 
 import { getToken } from "@/services";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // تجهيز الهيدر
 async function getHeaders(isFormData = false) {
@@ -26,7 +25,7 @@ async function getHeaders(isFormData = false) {
 export async function getData({ url }) {
   try {
     const headers = await getHeaders();
-    const response = await fetch(`${API_URL}${url}`, { headers });
+    const response = await fetch(`https://courses.subcodeco.com/api${url}`, { headers });
     const data = await response.json();
     return { code: response.status, success: true, data };
   } catch (err) {
@@ -46,7 +45,7 @@ export async function postData({ url, data, isFormData }) {
       ? getFormData(data || {})
       : JSON.stringify(data || {});
 
-    const response = await fetch(`${API_URL}${url}`, {
+    const response = await fetch(`https://courses.subcodeco.com/api${url}`, {
       method: "POST",
       headers,
       body,
