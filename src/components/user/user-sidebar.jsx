@@ -11,19 +11,19 @@ import Image from 'next/image';
 
 const UserSidebar = () => {
   return (
-    <div className='bg-main-background lg:p-8 p-4 lg:rounded-[50px] rounded-xl lg:space-y-6 space-y-2'>
+    <div className='bg-main-background lg:p-6 p-4 lg:rounded-[50px] rounded-xl lg:space-y-4 space-y-2'>
       {/* title  */}
       <h3 className='lg:text-xl font-bold uppercase text-main-orange'>Settings</h3>
       {/* links */}
       <div className='bg-white lg:p-6 p-4 lg:rounded-[40px] rounded-xl '>
-        <h3 className='lg:text-lg font-bold uppercase text-main-navy lg:mb-8 mb-4'>Personal information</h3>
+        <h3 className=' font-bold uppercase text-main-navy lg:mb-6 mb-4'>Personal information</h3>
         <ul className="flex flex-col lg:flex-col max-lg:flex-row max-lg:space-x-5 max-lg:space-y-0 lg:space-y-5 overflow-x-auto hide-scrollbar">
           <li className="flex-shrink-0">
             <Link
               href="/user"
-              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+              className="flex items-center gap-1 font-semibold text-main-navy text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
             >
-              <LiaUserSolid size={24} className="max-lg:size-4 text-inherit" />
+              <LiaUserSolid size={24} className="size-5 text-inherit" />
               <p>My Profile</p>
               <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
@@ -32,9 +32,9 @@ const UserSidebar = () => {
           <li className="flex-shrink-0">
             <Link
               href="/user/courses"
-              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+              className="flex items-center gap-1 font-semibold text-main-navy text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
             >
-              <HiOutlineFolderOpen size={24} className="max-lg:size-4 text-inherit" />
+              <HiOutlineFolderOpen size={24} className="size-5 text-inherit" />
               <p>My Courses</p>
               <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
@@ -43,9 +43,9 @@ const UserSidebar = () => {
           <li className="flex-shrink-0">
             <Link
               href="/user/private-lesson"
-              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+              className="flex items-center gap-1 font-semibold text-main-navy text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
             >
-              <HiOutlineBars3BottomLeft size={24} className="max-lg:size-4 text-inherit" />
+              <HiOutlineBars3BottomLeft size={24} className="size-5 text-inherit" />
               <p>My Private lessons</p>
               <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
@@ -54,9 +54,9 @@ const UserSidebar = () => {
           <li className="flex-shrink-0">
             <Link
               href="/user/certificates"
-              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+              className="flex items-center gap-1 font-semibold text-main-navy text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
             >
-              <TbCertificate size={24} className="max-lg:size-4 text-inherit" />
+              <TbCertificate size={24} className="size-5 text-inherit" />
               <p>My certificates</p>
               <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
@@ -65,9 +65,9 @@ const UserSidebar = () => {
           <li className="flex-shrink-0">
             <Link
               href="/user/favorites"
-              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+              className="flex items-center gap-1 font-semibold text-main-navy text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
             >
-              <RiHeart2Line size={24} className="max-lg:size-4 text-inherit" />
+              <RiHeart2Line size={24} className="size-5 text-inherit" />
               <p>My Favorites</p>
               <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
@@ -76,9 +76,9 @@ const UserSidebar = () => {
           <li className="flex-shrink-0">
             <Link
               href="/user/cart"
-              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+              className="flex items-center gap-1 font-semibold text-main-navy text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
             >
-              <PiShoppingBagOpen size={24} className="max-lg:size-4 text-inherit" />
+              <PiShoppingBagOpen size={24} className="size-5 text-inherit" />
               <p>My Carts</p>
               <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
@@ -87,9 +87,9 @@ const UserSidebar = () => {
           <li className="flex-shrink-0">
             <Link
               href="/user/points"
-              className="flex items-center gap-1 font-semibold text-main-navy max-lg:text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
+              className="flex items-center gap-1 font-semibold text-main-navy text-sm hover:text-main-orange hover:gap-2 transition-all duration-300"
             >
-              <VscActivateBreakpoints size={24} className="max-lg:size-4 text-inherit" />
+              <VscActivateBreakpoints size={24} className="size-5 text-inherit" />
               <p>My Points</p>
               <IoMdArrowForward size={20} className="text-inherit ms-auto hidden lg:block" />
             </Link>
@@ -102,24 +102,24 @@ const UserSidebar = () => {
         <Image src="/user/b.svg" alt="hero-shadow" width={100} height={100} className="absolute  bottom-0 start:-0 " />
         <Image src="/user/s.svg" alt="hero-shadow" width={200} height={100} className="absolute  bottom-0 start:-0 " />
 
-        <div className='px-8 py-12  space-y-6'>
-          <h3 className='text-xl font-bold  text-white capitalize'>Download app</h3>
-          <p className='text-sm font-bold text-main-navy'>Download the app to start watching now.</p>
+        <div className='px-6 py-8  space-y-4'>
+          <h3 className='text-lg font-bold  text-white capitalize'>Download app</h3>
+          <p className='text-xs font-bold text-main-navy'>Download the app to start watching now.</p>
           {/* google store and app store */}
           <div className='flex flex-col items-center gap-2 max-lg:justify-center'>
             <a href="#" className="  bg-black px-4 py-2 text-white rounded-full text-sm font-semibold flex w-fit items-center gap-4 hover:gap-6 transition-all duration-300">
-              <FaApple size={30} />
+              <FaApple size={22} />
               <div>
                 <p className='text-xs font-normal'>download on The</p>
-                <p>Apple Store</p>
+                <p className='text-xs'>Apple Store</p>
               </div>
 
             </a>
             <a href="#" className="  bg-main-light-orange px-4 py-2 text-white rounded-full text-sm font-semibold flex w-fit items-center gap-4 hover:gap-6 transition-all duration-300">
-              <FaGooglePlay size={30} />
+              <FaGooglePlay size={22} />
               <div>
                 <p className='text-xs font-normal'>download on The</p>
-                <p>Google Play</p>
+                <p className='text-xs'>Google Play</p>
               </div>
             </a>
           </div>
