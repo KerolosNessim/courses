@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
-import { z } from "zod"
+import { email, z } from "zod"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -23,6 +23,9 @@ import { Link, useRouter } from "@/i18n/navigation"
 import { Checkbox } from "../ui/checkbox"
 import { IoMdArrowRoundForward } from "react-icons/io"
 import { FcGoogle } from "react-icons/fc";
+import { postData } from "@/lib/fetch-methods"
+import { FaSpinner } from "react-icons/fa"
+import { tr } from "motion/react-client"
 
 
 
@@ -38,17 +41,27 @@ const ForgetPasswordForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-
     },
   })
 
   // submit function 
-  function onSubmit(data) {
-    if (data) {
-      router.push("/verfiy-otp")
+  async function onSubmit(data) {
+    
+    const response = await postData({
+      url: "/auth/forget-password",
+      data,
+      isFormData: false
+    })
+    if (response.code === 200) {
+      toast.success("OTP sent successfully")
+      router.push(`/verfiy-otp?email=${encodeURIComponent(data.email)}`)
     }
-
+    else {
+      toast.error("something went wrong please try again")
+    }
   }
+
+  const { formState: { isSubmitting } } = form
   return (
     <div className="w-full">
       {/* info  */}
@@ -83,10 +96,13 @@ const ForgetPasswordForm = () => {
 
           </div>
 
-          <Button type="submit" className="group w-full h-15 px-5  bg-main-orange  text-white rounded-full text-sm font-semibold flex  items-center justify-between hover:bg-main-orange">
+          <Button disabled={isSubmitting} type="submit" className="group w-full h-15 px-5  bg-main-orange  text-white rounded-full text-sm font-semibold flex  items-center justify-between hover:bg-main-orange">
             Get the code now
+
             <span className="size-10 bg-white rounded-full text-main-orange flex items-center justify-center -rotate-45 group-hover:rotate-0 transation-all duration-300">
-              <IoMdArrowRoundForward size={16} />
+              {
+                isSubmitting ? <FaSpinner size={16} className='animate-spin' /> : <IoMdArrowRoundForward size={16} />
+              }
             </span>
           </Button>
         </form>

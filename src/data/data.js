@@ -231,3 +231,21 @@ export const about = [
   },
 ];
 
+// specialties
+export const specialties = [
+  { id: 1, name: "Medicine" },
+  { id: 2, name: "Pharmacy" },
+  { id: 3, name: "Nursing" },
+  { id: 4, name: "Anesthesia" },
+  { id: 5, name: "Physiotherapy" },
+  { id: 6, name: "Respiratory Care" },
+  { id: 7, name: "Other" },
+];
+
+// degrees
+export const degrees = [
+  { id: 1, name: "Bachelor’s degree" },
+  { id: 2, name: "Master’s degree" },
+  { id: 3, name: "PhD" },
+  { id: 4, name: "Other" },
+];

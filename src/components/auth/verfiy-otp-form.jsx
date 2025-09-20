@@ -15,6 +15,7 @@ import {
 import { useRouter } from "@/i18n/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Image from 'next/image'
+import { useSearchParams } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { IoMdArrowRoundForward } from "react-icons/io"
 import { z } from "zod"
@@ -28,6 +29,8 @@ const formSchema = z.object({
 
 
 const VerfiyOtpForm = () => {
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email");
   const router = useRouter()
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -39,9 +42,8 @@ const VerfiyOtpForm = () => {
   // submit function 
   function onSubmit(data) {
     if (data) {
-      router.push("/reset-password")
+      router.push(`/reset-password?email=${encodeURIComponent(email)}&code=${encodeURIComponent(data.code)}`)
     }
-
   }
   return (
     <div className="w-full">

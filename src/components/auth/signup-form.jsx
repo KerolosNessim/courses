@@ -9,7 +9,7 @@ import {
   FormMessage
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Link } from "@/i18n/navigation"
+import { Link, useRouter } from "@/i18n/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Image from 'next/image'
 import { useState } from "react"
@@ -24,44 +24,62 @@ import { z } from "zod"
 import { Checkbox } from "../ui/checkbox"
 import SignupStep2 from "./signup-step2"
 import PhoneInputWithCountry from "../shared/PhoneInputWithCountry"
+import { postData } from "@/lib/fetch-methods"
+import { FaSpinner } from "react-icons/fa"
+import { toast } from "sonner"
 
 
 // schema
 const formSchema = z.object({
-  name: z.string().min(1, { message: "Name is required" }),
-  phone: z.string().min(1, { message: "Phone is required" }),
+  full_name: z.string().min(1, { message: "Name is required" }),
+  phone_number: z.string().min(1, { message: "Phone is required" }),
   email: z.string().email({ message: "Email is required" }),
-  password: z.string().min(1, { message: "Password is required" }),
-  confirmPassword: z.string().min(1, { message: "Confirm Password is required" }),
-}).refine((data) => data.password === data.confirmPassword, {
+  password: z.string().min(8, { message: "password must be at least 8 characters" }).nonempty({ message: "Password is required" }),
+  password_confirmation: z.string().min(8, { message: "Confirm Password must be at least 8 characters" }).nonempty({ message: "Confirm Password is required" }),
+}).refine((data) => data.password === data.password_confirmation, {
   message: "Passwords do not match",
-  path: ["confirmPassword"],
+  path: ["password_confirmation"],
 })
 
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const [steps, setSteps] = useState(1)
+
+  const router = useRouter()
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      phone: "",
+      full_name: "",
+      phone_number: "",
       email: "",
       password: "",
       confirmPassword: "",
     },
   })
 
+  const { formState: { isSubmitting } } = form;
+
   // submit function 
-  function onSubmit(data) {
+  async function onSubmit(data) {
     console.log(data);
-    setSteps(2)
+
+    const response = await postData({
+      url: "/auth/register",
+      data,
+      isFormData: true
+    })
+    console.log(response);
+    if (response.code === 201) {
+      router.push(`/acadimic-info?email=${encodeURIComponent(data.email)}`)
+    }
+    if (response.code === 422) {
+      toast.error("email or phone number already exists")
+    }
   }
 
 
-  if (steps === 1) return (
+  return (
     <div className="w-full">
       {/* logo */}
       <Image src="/shared/logo.png" alt="logo" width={90} height={90} className='block mx-auto mb-8' />
@@ -80,7 +98,7 @@ const SignUpForm = () => {
             {/* name */}
             <FormField
               control={form.control}
-              name="name"
+              name="full_name"
               render={({ field }) => (
                 <FormItem className={"relative"}>
                   <LiaUserSolid size={26} className='absolute top-1/2  end-5 text-main-navy' />
@@ -95,7 +113,7 @@ const SignUpForm = () => {
             {/* phone */}
             <FormField
               control={form.control}
-              name="phone"
+              name="phone_number"
               render={({ field }) => (
                 <FormItem className={"relative"}>
                   <Image src={"/auth/phone.svg"} alt="phone" width={20} height={20} className='absolute top-1/2  end-5 text-main-navy' />
@@ -145,7 +163,7 @@ const SignUpForm = () => {
             {/* confirm password */}
             <FormField
               control={form.control}
-              name="confirmPassword"
+              name="password_confirmation"
               render={({ field }) => (
                 <FormItem className={"relative"}>
                   {
@@ -169,10 +187,14 @@ const SignUpForm = () => {
             <label htmlFor="remember" className="text-[10px] text-main-gray font-semibold">By click <span className="text-main-navy ">"Sgin Up"</span>you agree <Link href="/terms-and-conditions" className="text-main-orange hover:underline">Terms & Conditions</Link> & <Link href="/privacy-policy" className="text-main-orange hover:underline">Privacy Policy</Link> </label>
           </div>
 
-          <Button type="submit" className="group w-full h-15 px-5  bg-main-orange  text-white rounded-full text-sm font-semibold flex  items-center justify-between hover:bg-main-orange">
+          <Button disabled={isSubmitting} type="submit" className="group w-full h-15 px-5  bg-main-orange  text-white rounded-full text-sm font-semibold flex  items-center justify-between hover:bg-main-orange">
             Sign up
             <span className="size-10 bg-white rounded-full text-main-orange flex items-center justify-center -rotate-45 group-hover:rotate-0 transation-all duration-300">
-              <IoMdArrowRoundForward size={16} />
+              {isSubmitting
+                ?
+                <FaSpinner size={16} className='animate-spin' />
+                :
+                <IoMdArrowRoundForward size={16} />}
             </span>
           </Button>
 
@@ -186,7 +208,7 @@ const SignUpForm = () => {
       </Form>
     </div>
   )
-  if (steps === 2) return (<SignupStep2 data={form.getValues()} setSteps={setSteps} />)
+
 
 
 

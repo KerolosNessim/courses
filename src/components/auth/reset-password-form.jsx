@@ -9,13 +9,18 @@ import {
   FormMessage
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useRouter } from "@/i18n/navigation"
+import { postData } from "@/lib/fetch-methods"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Image from 'next/image'
+import { useSearchParams } from "next/navigation"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import { FaSpinner } from "react-icons/fa"
 import { IoMdArrowRoundForward } from "react-icons/io"
 import 'react-phone-number-input/style.css'
+import { toast } from "sonner"
 import { z } from "zod"
 
 // schema
@@ -28,6 +33,10 @@ const formSchema = z.object({
 })
 
 const ResetPasswordForm = () => {
+  const searchParams = useSearchParams()
+  const email = searchParams.get("email")
+  const otp = searchParams.get("code")
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
@@ -40,9 +49,31 @@ const ResetPasswordForm = () => {
   })
 
   // submit function 
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(data) {
+
+
+    const values = {
+      email,
+      otp,
+      new_password: data.password,
+      new_password_confirmation: data.confirmPassword
+    }
+    const response = await postData({
+      url: "/auth/reset-password",
+      data: values,
+      isFormData: false
+    })
+    console.log(response);
+    
+    if (response.code === 200) {
+      toast.success("Password reset successfully")
+      router.push("/login")
+    }
+    else {
+      toast.error("something went wrong please try again")
+    }
   }
+  const { formState: { isSubmitting } } = form
   return (
     <div className="w-full">
       {/* info  */}
@@ -102,10 +133,12 @@ const ResetPasswordForm = () => {
           </div>
 
 
-          <Button type="submit" className="group w-full h-15 px-5  bg-main-light-orange  text-white rounded-full text-sm font-semibold flex  items-center justify-between hover:bg-main-light-orange">
+          <Button disabled={isSubmitting} type="submit" className="group w-full h-15 px-5  bg-main-light-orange  text-white rounded-full text-sm font-semibold flex  items-center justify-between hover:bg-main-light-orange">
             Save New Password
             <span className="size-10 bg-white rounded-full text-main-orange flex items-center justify-center -rotate-45 group-hover:rotate-0 transation-all duration-300">
-              <IoMdArrowRoundForward size={16} />
+              {isSubmitting ? <FaSpinner size={16} className="animate-spin" /> :
+                <IoMdArrowRoundForward size={16} />
+              }
             </span>
           </Button>
 

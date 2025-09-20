@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import Image from 'next/image'
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { email, z } from "zod"
 import { Checkbox } from "../ui/checkbox"
 import { IoMdArrowRoundForward } from "react-icons/io"
 import { div } from "motion/react-client"
@@ -39,6 +39,10 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { FaX } from "react-icons/fa6"
+import { degrees, specialties } from "@/data/data"
+import { postData } from "@/lib/fetch-methods"
+import { useSearchParams } from "next/navigation"
+import { FaSpinner } from "react-icons/fa"
 
 
 // schema
@@ -48,6 +52,8 @@ const formSchema = z.object({
 })
 
 const SignupStep2 = ({ data }) => {
+  const searchParams = useSearchParams()
+  const email = searchParams.get("email")
   const [openDialog, setOpenDialog] = useState(false)
   const router = useRouter()
   const form = useForm({
@@ -58,11 +64,28 @@ const SignupStep2 = ({ data }) => {
     },
   })
   const isFilled = form.watch("specialty") && form.watch("degree");
+
+  const { formState: { isSubmitting } } = form;
   // submit function 
-  function onSubmit(values) {
-    const final = { ...data, ...values }
-    console.log(final);
-    setOpenDialog(true)
+  async function onSubmit(values) {
+    const payload = {
+      email, // من الـ query
+      specialties: [values.specialty],
+      academic_degrees: [values.degree]
+    }
+
+    console.log(payload)
+    const response = await postData({
+      url: "/auth/academic-info",
+      data: payload,
+      isFormData: false
+    })
+    if (response.code === 200) {
+      setOpenDialog(true)
+    }
+    else {
+      toast.error("something went wrong please try again")
+    }
   }
   return (
     <div className="w-full">
@@ -99,17 +122,9 @@ const SignupStep2 = ({ data }) => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className={" rounded-2xl"}>
-                      {[
-                        "Medicine",
-                        "Pharmacy",
-                        "Nursing",
-                        "Anesthesia",
-                        "Physiotherapy",
-                        "Respiratory Care",
-                        "Other",
-                      ].map((item) => (
-                        <SelectItem key={item} value={item} className={"capitalize text-main-navy p-3"}>
-                          {item}
+                      {specialties.map((item, index) => (
+                        <SelectItem key={item.id} value={String(item.id)} className={"capitalize text-main-navy p-3"}>
+                          {item.name}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -135,8 +150,8 @@ const SignupStep2 = ({ data }) => {
                     </FormControl>
                     <SelectContent className={" rounded-2xl "}>
                       {
-                        ["Bachelor’s degree", "Master’s degree", "PhD", "other"].map((item, index) => (
-                          <SelectItem className={"capitalize text-main-navy p-3"} key={index} value={item}>{item}</SelectItem>
+                        degrees.map((item) => (
+                          <SelectItem className={"capitalize text-main-navy p-3"} key={item.id} value={String(item.id)}>{item.name}</SelectItem>
                         ))
                       }
                     </SelectContent>
@@ -148,6 +163,7 @@ const SignupStep2 = ({ data }) => {
             />
           </div>
           <Button
+            disabled={isSubmitting}
             type="submit"
             className={`group w-full h-15 px-5 rounded-full text-sm font-semibold flex items-center justify-between 
     ${isFilled
@@ -157,7 +173,10 @@ const SignupStep2 = ({ data }) => {
             Save Information
             <span className={`size-10 rounded-full flex items-center justify-center -rotate-45 group-hover:rotate-0 transition-all duration-300 bg-white
     ${isFilled ? " text-main-orange" : "text-main-navy"}`}>
-              <IoMdArrowRoundForward size={16} />
+              {
+                isSubmitting ? <FaSpinner size={16} className="animate-spin" /> :
+                  <IoMdArrowRoundForward size={16} />
+              }
             </span>
           </Button>
         </form>
@@ -169,23 +188,43 @@ const SignupStep2 = ({ data }) => {
               <AlertDialogTitle className={"text-sm font-semibold "}>Terms of the pledge</AlertDialogTitle>
               <AlertDialogCancel className={"border-0 shadow-none hover:shadow-none hover:bg-transparent hover:text-main-orange"}><FaX size={20} /></AlertDialogCancel>
             </div>
-            <AlertDialogDescription className={"space-y-4"}>
+            <AlertDialogDescription asChild>
+              <div className="space-y-4">
+                <h3 className="text-main-orange text-xl font-bold">1.Commitment to Seriousness</h3>
+                <p className="font-semibold text-black leading-10">
+                  I pledge to follow the medical courses with full seriousness, respect schedules, and use the provided materials responsibly to gain maximum benefit from the instructor’s expertise.
+                </p>
 
-              <h3 className="text-main-orange text-xl font-bold">1.Commitment to Seriousness</h3>
-              <p className="font-semibold text-black leading-10">I pledge to follow the medical courses with full seriousness, respect schedules, and use the provided materials responsibly to gain maximum benefit from the instructor’s expertise.</p>
-              <h3 className="text-main-orange text-xl font-bold">2.Respect for Ownership</h3>
-              <p className="font-semibold text-black leading-10">I pledge not to copy, reproduce, or distribute any course materials in any form, respecting intellectual property rights and the effort invested in preparing the lessons.</p>
-              <h3 className="text-main-orange text-xl font-bold">3.Information Confidentiality</h3>
-              <p className="font-semibold text-black leading-10">I pledge to maintain confidentiality of medical information and practical examples shared during lessons, and not to use them outside of the authorized educational purposes.</p>
-              {/* remeber me and forgot password */}
-              <div className="flex items-center gap-1">
-                <Checkbox id="remember" className='border-main-navy shadow-none rounded-[6px] data-[state=checked]:bg-green-400 data-[state=checked]:border-green-400' />
-                <label htmlFor="remember" className="text-[10px] text-main-gray font-semibold">By click <span className="text-main-navy "> "I Agree to the Commitment",</span>you agree <Link href="/terms-and-conditions" className="text-main-orange hover:underline">Terms & Conditions</Link> & <Link href="/privacy-policy" className="text-main-orange hover:underline">Privacy Policy</Link> </label>
+                <h3 className="text-main-orange text-xl font-bold">2.Respect for Ownership</h3>
+                <p className="font-semibold text-black leading-10">
+                  I pledge not to copy, reproduce, or distribute any course materials in any form, respecting intellectual property rights and the effort invested in preparing the lessons.
+                </p>
+
+                <h3 className="text-main-orange text-xl font-bold">3.Information Confidentiality</h3>
+                <p className="font-semibold text-black leading-10">
+                  I pledge to maintain confidentiality of medical information and practical examples shared during lessons, and not to use them outside of the authorized educational purposes.
+                </p>
+
+                <div className="flex items-center gap-1">
+                  <Checkbox
+                    id="remember"
+                    className="border-main-navy shadow-none rounded-[6px] data-[state=checked]:bg-green-400 data-[state=checked]:border-green-400"
+                  />
+                  <label
+                    htmlFor="remember"
+                    className="text-[10px] text-main-gray font-semibold"
+                  >
+                    By click <span className="text-main-navy">"I Agree to the Commitment",</span>
+                    you agree <Link href="/terms-and-conditions" className="text-main-orange hover:underline">Terms & Conditions</Link>
+                    & <Link href="/privacy-policy" className="text-main-orange hover:underline">Privacy Policy</Link>
+                  </label>
+                </div>
               </div>
             </AlertDialogDescription>
+
           </AlertDialogHeader>
           <AlertDialogFooter className={"flex flex-col gap-4"}>
-            <Link href="/verfiy-email" className="group w-fit mx-auto h-15 px-5  bg-main-navy  text-white rounded-full text-sm font-semibold flex  items-center gap-4 hover:bg-main-navy hover:text-white">
+            <Link href={`/verfiy-email?email=${encodeURIComponent(email)}`} className="group w-fit mx-auto h-15 px-5  bg-main-navy  text-white rounded-full text-sm font-semibold flex  items-center gap-4 hover:bg-main-navy hover:text-white">
               I Agree to the Commitment
               <span className="size-10 bg-white rounded-full text-main-navy flex items-center justify-center -rotate-45 group-hover:rotate-0 transation-all duration-300">
                 <IoMdArrowRoundForward size={16} />

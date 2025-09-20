@@ -1,28 +1,29 @@
 "use client"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { toast } from "sonner"
-import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Link, useRouter } from "@/i18n/navigation"
+import { postData } from "@/lib/fetch-methods"
+import { zodResolver } from "@hookform/resolvers/zod"
 import Image from 'next/image'
-import { LiaUserSolid } from 'react-icons/lia'
-import { AiOutlineEye } from "react-icons/ai";
-import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react"
-import { Link } from "@/i18n/navigation"
-import { Checkbox } from "../ui/checkbox"
+import { set, useForm } from "react-hook-form"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import { FcGoogle } from "react-icons/fc"
 import { IoMdArrowRoundForward } from "react-icons/io"
-import { FcGoogle } from "react-icons/fc";
+import { LiaUserSolid } from 'react-icons/lia'
+import { toast } from "sonner"
+import { z } from "zod"
+import { Checkbox } from "../ui/checkbox"
+import { setToken } from "@/services"
+import { FaSpinner } from "react-icons/fa"
 
 
 
@@ -36,6 +37,7 @@ const formSchema = z.object({
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -44,10 +46,24 @@ const LoginForm = () => {
       password: "",
     },
   })
+  const {formState: { isSubmitting } } = form
 
   // submit function 
-  function onSubmit(data) {
-
+  async function onSubmit(data) {
+    const response = await postData({
+      url: "/auth/login",
+      data,
+      isFormData: false
+    })
+    console.log(response);
+    if (response.code === 200) {
+      toast.success("Login successful")
+      setToken(response?.data?.data?.access_token)
+      router.push("/")
+    }
+    else {
+      toast.error("something went wrong please try again")
+    }
   }
   return (
     <div className="w-full">
@@ -117,10 +133,10 @@ const LoginForm = () => {
               </div>
             </div>
           </div>
-          <Button type="submit" className="group w-full h-15 px-5  bg-main-orange  text-white rounded-full text-sm font-semibold flex  items-center justify-between hover:bg-main-orange">
+          <Button disabled={isSubmitting} type="submit" className="group w-full h-15 px-5  bg-main-orange  text-white rounded-full text-sm font-semibold flex  items-center justify-between hover:bg-main-orange">
             Log in
             <span className="size-10 bg-white rounded-full text-main-orange flex items-center justify-center -rotate-45 group-hover:rotate-0 transation-all duration-300">
-              <IoMdArrowRoundForward size={16} />
+              {isSubmitting ? <FaSpinner size={16} className='animate-spin' /> : <IoMdArrowRoundForward size={16} />}
             </span>
           </Button>
           {/* or */}

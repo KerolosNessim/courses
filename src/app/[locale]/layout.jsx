@@ -27,7 +27,7 @@ export default async function RootLayout({ children, params }) {
     <html lang={locale}>
       <body className={`${poppins.className} `} dir={locale === "ar" ? "rtl" : "ltr"}>
         <NextIntlClientProvider >
-          <Toaster />
+          <Toaster closeButton richColors position="top-right" expand={true} />
           {children}
         </NextIntlClientProvider>
       </body>
